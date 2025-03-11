@@ -5,9 +5,7 @@ config.read('app.conf')
 
 # Logging
 import logging
-logging.basicConfig(
-    **config['Logging']
-)
+logging.basicConfig(**config['Logging'])
 logger = logging.getLogger(__name__)
 
 # Flask App
@@ -23,6 +21,4 @@ app.register_blueprint(example.api, url_prefix=f"/api/v{example.__version__}/exa
 # Start app
 if __name__ == '__main__':
     logger.info('Launching app')
-    app.run(
-        **config['Serve'],
-    )
+    app.run(**config['Serve'])
