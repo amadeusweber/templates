@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  api:
+    container_name: campus-sport-booker
+    restart: unless-stopped
+    build:
+      context: src
+      target: builder
+    stop_signal: SIGINT
+    ports:
+      - 5000:5000
+    volumes:
+      - ./app.conf:/app/app.conf
+    environment:
+      - TZ=Europe/Berlin
